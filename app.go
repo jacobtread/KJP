@@ -163,6 +163,7 @@ func GetXML(endpoint string, ip string, data *url.Values) ([]byte, error) {
 	req.Header.Add("Content-Type", "application/x-www-form-urlencoded")
 	req.Header.Add("Content-Length", strconv.Itoa(len(encoded)))
 	req.Header.Add("X-Forwarded-For", ip)
+	req.Header.Add("X-Requested-With", "nz.co.KAMAR")
 
 	res, err := client.Do(req)
 	if err != nil {
