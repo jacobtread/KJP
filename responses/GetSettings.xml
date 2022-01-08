@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SettingsResults apiversion="4.02.003" portalversion="2021.11.014">
+    <AccessLevel>0</AccessLevel>
+    <ErrorCode>0</ErrorCode>
+    <SettingsVersion>1.06</SettingsVersion>
+    <MiniOSVersion>2.14</MiniOSVersion>
+    <MinAndroidVersion>1.08</MinAndroidVersion>
+    <StudentsAllowed>1</StudentsAllowed>
+    <StaffAllowed>1</StaffAllowed>
+    <StudentsSavedPasswords>1</StudentsSavedPasswords>
+    <StaffSavedPasswords>1</StaffSavedPasswords>
+    <SchoolName>x</SchoolName>
+    <LogoPath>x/logo.png</LogoPath>
+    <AssessmentTypesShown></AssessmentTypesShown>
+    <ShowEnrolledEntries>0</ShowEnrolledEntries>
+    <UserAccess>
+        <User index="0">
+            <Notices>1</Notices>
+        <Events>1</Events>
+    </User>
+        <User index="1"><Notices>1</Notices>
+            <Events>1</Events>
+            <Details>1</Details>
+            <Timetable>1</Timetable>
+            <Attendance>1</Attendance>
+            <NCEA>1</NCEA>
+            <Results>1</Results>
+            <Groups>1</Groups>
+            <Awards>1</Awards>
+            <Pastoral></Pastoral>
+            <ReportAbsenceSt></ReportAbsenceSt>
+            <ReportAbsence>0</ReportAbsence>
+        </User>
+        <User index="2"><Notices>1</Notices>
+            <Events>1</Events>
+            <Details>1</Details>
+            <Timetable>1</Timetable>
+            <Attendance>1</Attendance>
+            <NCEA>1</NCEA>
+            <Results>1</Results>
+            <Groups>1</Groups>
+            <Awards>1</Awards>
+            <Pastoral></Pastoral>
+            <ReportAbsencePg>1</ReportAbsencePg>
+            <ReportAbsence>1</ReportAbsence>
+        </User>
+        <User index="3"><Notices>1</Notices>
+            <Events>1</Events>
+            <Details>1</Details>
+            <Timetable>1</Timetable>
+            <Attendance>1</Attendance>
+            <NCEA>1</NCEA>
+            <Results>1</Results>
+            <Groups>1</Groups>
+            <Awards>1</Awards>
+            <Pastoral></Pastoral>
+        </User>
+        <User index="10"><Notices>1</Notices>
+            <Events>1</Events>
+            <Details>1</Details>
+            <Timetable>1</Timetable>
+            <Attendance>1</Attendance>
+            <NCEA></NCEA>
+            <Results>1</Results>
+            <Groups>1</Groups>
+            <Awards></Awards>
+            <Pastoral>1</Pastoral>
+        </User>
+        <CalendarSettings>
+            <aero>Aero</aero>
+            <amazon>Amazon</amazon>
+            <auburn>Auburn</auburn>
+            <blue>Blue</blue>
+            <green>Green</green>
+            <orange>Orange</orange>
+            <purple>Purple</purple>
+            <red>Red</red>
+            <tangerine>Tangerine</tangerine>
+            <teal>Teal</teal>
+            <violet>Violet</violet>
+            <black>Black</black>
+        </CalendarSettings>
+    </UserAccess>
+
+</SettingsResults>
