@@ -70,6 +70,8 @@ func HandleRequest(context aero.Context) error {
 		return context.JSON(ErrorResponse{Error: "Missing X-Portal header. Don't know where to send the request"})
 	}
 
+	portalUrl = fmt.Sprintf("https://%s/api/api.php", portalUrl)
+
 	params := map[string]interface{}{}
 	if method == "POST" {
 		rawData := map[string]interface{}{}

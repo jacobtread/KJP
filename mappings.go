@@ -20,6 +20,7 @@ type LoginResults struct {
 	Success        string `xml:"Success" json:"success"`
 	LoginLevel     int8   `xml:"LoginLevel" json:"login_level"`
 	CurrentStudent int32  `xml:"CurrentStudent" json:"current_student"`
+	Key            string `xml:"Key" json:"key"`
 }
 
 type SettingsResults struct {
