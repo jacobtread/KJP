@@ -7,6 +7,7 @@ import (
 	"github.com/aerogo/aero"
 	"io"
 	"io/ioutil"
+	"log"
 	"net/http"
 	"net/url"
 	"reflect"
@@ -79,6 +80,9 @@ func HandleRequest(context aero.Context) error {
 		// Let them know that the X-Portal header is required
 		return context.JSON(ErrorResponse{Error: "Missing X-Portal header. Don't know where to send the request"})
 	}
+	// Log the request
+	log.Printf("(%s) (%s) >> %s", context.IP(), portalUrl, mapping.Command)
+
 	// Prepend the protocol and append the api route
 	portalUrl = fmt.Sprintf("https://%s/api/api.php", portalUrl)
 	// The request values to be provided to the KAMAR request
