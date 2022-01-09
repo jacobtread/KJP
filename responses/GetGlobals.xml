@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalsResults apiversion="4.02.003" portalversion="2021.11.014">
+    <AccessLevel>0</AccessLevel>
+    <ErrorCode>0</ErrorCode>
+    <NumberRecords>1</NumberRecords>
+    <PeriodDefinitions>
+        <PeriodDefinition index="1">
+            <PeriodName>Before School</PeriodName>
+            <PeriodTime>08:15</PeriodTime>
+        </PeriodDefinition>
+        <PeriodDefinition index="2">
+            <PeriodName>Whanau Time</PeriodName>
+            <PeriodTime>08:45</PeriodTime>
+        </PeriodDefinition>
+        <PeriodDefinition index="3">
+            <PeriodName>Period 1</PeriodName>
+            <PeriodTime>09:00</PeriodTime>
+        </PeriodDefinition>
+        <PeriodDefinition index="4">
+            <PeriodName>Period 2</PeriodName>
+            <PeriodTime>10:00</PeriodTime>
+        </PeriodDefinition>
+        <PeriodDefinition index="5">
+            <PeriodName>Interval</PeriodName>
+            <PeriodTime>11:00</PeriodTime>
+        </PeriodDefinition>
+        <PeriodDefinition index="6">
+            <PeriodName>Period 3</PeriodName>
+            <PeriodTime>11:30</PeriodTime>
+        </PeriodDefinition>
+        <PeriodDefinition index="7">
+            <PeriodName>Period 4</PeriodName>
+            <PeriodTime>12:30</PeriodTime>
+        </PeriodDefinition>
+        <PeriodDefinition index="8">
+            <PeriodName>Lunch</PeriodName>
+            <PeriodTime>13:30</PeriodTime>
+        </PeriodDefinition>
+        <PeriodDefinition index="9">
+            <PeriodName>Period 5</PeriodName>
+            <PeriodTime>14:10</PeriodTime>
+        </PeriodDefinition>
+        <PeriodDefinition index="10">
+            <PeriodName>After School</PeriodName>
+            <PeriodTime>15:10</PeriodTime>
+        </PeriodDefinition>
+    </PeriodDefinitions>
+    <StartTimes>
+        <Day index="1">
+            <PeriodTime index="1">08:15</PeriodTime>
+            <PeriodTime index="2">08:45</PeriodTime>
+            <PeriodTime index="3">09:00</PeriodTime>
+            <PeriodTime index="4">10:00</PeriodTime>
+            <PeriodTime index="5">11:00</PeriodTime>
+            <PeriodTime index="6">11:30</PeriodTime>
+            <PeriodTime index="7">12:30</PeriodTime>
+            <PeriodTime index="8">13:30</PeriodTime>
+            <PeriodTime index="9">14:10</PeriodTime>
+            <PeriodTime index="10">15:10</PeriodTime>
+        </Day>
+        <Day index="2">
+            <PeriodTime index="1">08:15</PeriodTime>
+            <PeriodTime index="2">08:45</PeriodTime>
+            <PeriodTime index="3">09:00</PeriodTime>
+            <PeriodTime index="4">10:00</PeriodTime>
+            <PeriodTime index="5">11:00</PeriodTime>
+            <PeriodTime index="6">11:30</PeriodTime>
+            <PeriodTime index="7">12:30</PeriodTime>
+            <PeriodTime index="8">13:30</PeriodTime>
+            <PeriodTime index="9">14:10</PeriodTime>
+            <PeriodTime index="10">15:10</PeriodTime>
+        </Day>
+        <Day index="3">
+            <PeriodTime index="1">08:15</PeriodTime>
+            <PeriodTime index="2">08:45</PeriodTime>
+            <PeriodTime index="3">09:00</PeriodTime>
+            <PeriodTime index="4">10:00</PeriodTime>
+            <PeriodTime index="5">11:00</PeriodTime>
+            <PeriodTime index="6">11:30</PeriodTime>
+            <PeriodTime index="7">12:30</PeriodTime>
+            <PeriodTime index="8">13:30</PeriodTime>
+            <PeriodTime index="9">14:10</PeriodTime>
+            <PeriodTime index="10">15:10</PeriodTime>
+        </Day>
+        <Day index="4">
+            <PeriodTime index="1">08:15</PeriodTime>
+            <PeriodTime index="2">08:45</PeriodTime>
+            <PeriodTime index="3">09:00</PeriodTime>
+            <PeriodTime index="4">10:00</PeriodTime>
+            <PeriodTime index="5">11:00</PeriodTime>
+            <PeriodTime index="6">11:30</PeriodTime>
+            <PeriodTime index="7">12:30</PeriodTime>
+            <PeriodTime index="8">13:30</PeriodTime>
+            <PeriodTime index="9">14:10</PeriodTime>
+            <PeriodTime index="10">15:10</PeriodTime>
+        </Day>
+        <Day index="5">
+            <PeriodTime index="1">08:15</PeriodTime>
+            <PeriodTime index="2">08:45</PeriodTime>
+            <PeriodTime index="3">09:00</PeriodTime>
+            <PeriodTime index="4">10:00</PeriodTime>
+            <PeriodTime index="5">11:00</PeriodTime>
+            <PeriodTime index="6">11:30</PeriodTime>
+            <PeriodTime index="7">12:30</PeriodTime>
+            <PeriodTime index="8">13:30</PeriodTime>
+            <PeriodTime index="9">14:10</PeriodTime>
+            <PeriodTime index="10">15:10</PeriodTime>
+        </Day>
+    </StartTimes>
+</GlobalsResults>

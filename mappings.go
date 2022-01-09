@@ -14,7 +14,7 @@ type ParameterMapping struct {
 
 type LoginResults struct {
 	AccessLevel int8   `xml:"AccessLevel" json:"access_level"`
-	Error       string `xml:"Error" json:"error"`
+	Error       string `xml:"Error" json:"error,omitempty"`
 	ErrorCode   int8   `xml:"ErrorCode" json:"error_code"`
 
 	Success        string `xml:"Success" json:"success"`
@@ -24,8 +24,10 @@ type LoginResults struct {
 }
 
 type SettingsResults struct {
-	AccessLevel            int8                `xml:"AccessLevel" json:"access_level"`
-	ErrorCode              int8                `xml:"ErrorCode" json:"error_code"`
+	AccessLevel int8   `xml:"AccessLevel" json:"access_level"`
+	Error       string `xml:"Error" json:"error,omitempty"`
+	ErrorCode   int8   `xml:"ErrorCode" json:"error_code"`
+
 	SettingsVersion        string              `xml:"SettingsVersion" json:"settings_version"`
 	MiniOSVersion          string              `xml:"MiniOSVersion" json:"min_ios_version"`
 	MinAndroidVersion      string              `xml:"MinAndroidVersion" json:"min_android_version"`
@@ -71,6 +73,26 @@ type SettingsCalendar struct {
 	Black     string `xml:"black" json:"black"`
 }
 
+type GlobalsResults struct {
+	AccessLevel int8   `xml:"AccessLevel" json:"access_level"`
+	Error       string `xml:"Error" json:"error,omitempty"`
+	ErrorCode   int8   `xml:"ErrorCode" json:"error_code"`
+
+	NumberRecords     int16              `xml:"NumberRecords" json:"number_records"`
+	PeriodDefinitions []PeriodDefinition `xml:"PeriodDefinitions>PeriodDefinition" json:"period_definitions"`
+	StartTimes        []GlobalsDay       `xml:"StartTimes>Day" json:"start_times"`
+}
+
+type PeriodDefinition struct {
+	Name string `xml:"PeriodName" json:"name"`
+	Time string `xml:"PeriodTime" json:"time"`
+}
+
+type GlobalsDay struct {
+	Index       int16    `xml:"index,attr" json:"index"`
+	PeriodTimes []string `xml:"PeriodTime" json:"times"`
+}
+
 var Mappings = map[string]ContentMapping{
 	"login": {
 		Method:  "POST",
@@ -94,6 +116,13 @@ var Mappings = map[string]ContentMapping{
 		Command: "GetSettings",
 		Response: func() interface{} {
 			return &SettingsResults{}
+		},
+	},
+	"globals": {
+		Method:  "GET",
+		Command: "GetGlobals",
+		Response: func() interface{} {
+			return &GlobalsResults{}
 		},
 	},
 }
