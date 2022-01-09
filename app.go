@@ -158,6 +158,7 @@ func HandleRequest(context aero.Context) error {
 
 // MakeRequest Makes an HTTP request to the provided url with the provided data and returns its bytes
 func MakeRequest(endpoint string, ip string, data *url.Values) ([]byte, error) {
+	// Create transport that won't keep itself alive
 	var transport http.RoundTripper = &http.Transport{
 		DisableKeepAlives: true,
 	}
@@ -192,6 +193,7 @@ func MakeRequest(endpoint string, ip string, data *url.Values) ([]byte, error) {
 	if err != nil {      // If we encountered an error
 		return nil, err // Return the error
 	}
+	// Close the connections
 	client.CloseIdleConnections()
 	// Return the response bytes we got back
 	return body, nil
