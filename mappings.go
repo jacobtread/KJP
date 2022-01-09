@@ -152,6 +152,27 @@ type AttendanceWeek struct {
 	Days      []string `xml:"Days>Day" json:"days"`
 }
 
+type CalendarResults struct {
+	AccessLevel int8   `xml:"AccessLevel" json:"access_level"`
+	Error       string `xml:"Error" json:"error,omitempty"`
+	ErrorCode   int8   `xml:"ErrorCode" json:"error_code"`
+
+	NumberRecords uint16        `xml:"NumberRecords" json:"number_records"`
+	Days          []CalendarDay `xml:"Days>Day" json:"days"`
+}
+
+type CalendarDay struct {
+	Date     string `xml:"Date" json:"date"`
+	Status   string `xml:"Status" json:"status"`
+	DayTT    uint16 `xml:"DayTT,omitempty" json:"day_tt,omitempty"`
+	Term     uint16 `xml:"Term,omitempty" json:"term,omitempty"`
+	TermA    uint16 `xml:"TermA,omitempty" json:"term_a,omitempty"`
+	Week     uint16 `xml:"Week,omitempty" json:"week,omitempty"`
+	WeekA    uint16 `xml:"WeekA,omitempty" json:"week_a,omitempty"`
+	WeekYear uint16 `xml:"WeekYear,omitempty" json:"week_year,omitempty"`
+	TermYear uint16 `xml:"TermYear,omitempty" json:"term_year,omitempty"`
+}
+
 type ContentMapping struct {
 	Method     string
 	Command    string
@@ -212,12 +233,23 @@ var Mappings = map[string]ContentMapping{
 		Method:     "GET",
 		RequireKey: true,
 		Command:    "GetStudentAttendance",
-		Response:   func() interface{} { return &StudentAttendanceResults{} },
 		Parameters: map[string]ParameterMapping{
 			"grid": {
 				Name:     "Grid",
 				Required: true,
 			},
 		},
+		Response: func() interface{} { return &StudentAttendanceResults{} },
+	},
+	"calendar": {
+		Method:  "GET",
+		Command: "GetCalendar",
+		Parameters: map[string]ParameterMapping{
+			"year": {
+				Name:     "Year",
+				Required: true,
+			},
+		},
+		Response: func() interface{} { return &CalendarResults{} },
 	},
 }

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CalendarResults apiversion="4.02.002" portalversion="4.02.080">
+    <AccessLevel>0</AccessLevel>
+    <ErrorCode>0</ErrorCode>
+    <NumberRecords>366</NumberRecords>
+    <Days>
+        <Day index="1">
+            <Date>2020-01-01</Date>
+            <Status>Holidays</Status>
+            <DayTT></DayTT>
+            <Term></Term>
+            <TermA></TermA>
+            <Week></Week>
+            <WeekA></WeekA>
+            <WeekYear></WeekYear>
+            <TermYear></TermYear>
+        </Day>
+        ...*365
+    </Days>
+</CalendarResults>
