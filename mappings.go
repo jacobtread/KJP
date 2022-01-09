@@ -113,6 +113,7 @@ type GeneralNotice struct {
 type ContentMapping struct {
 	Method     string
 	Command    string
+	RequireKey bool
 	Parameters map[string]ParameterMapping
 	Response   func() interface{}
 }

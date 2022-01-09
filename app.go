@@ -61,6 +61,10 @@ func HandleRequest(context aero.Context) error {
 
 	key := request.Header("Authorization")
 	if len(key) < 1 {
+		if mapping.RequireKey == true {
+			context.SetStatus(401)
+			return context.JSON(ErrorResponse{Error: "You must provided a Authorization header to access this route"})
+		}
 		key = DefaultKey
 	}
 
