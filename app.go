@@ -42,6 +42,8 @@ func main() {
 	})
 	// Bind all methods to HandleRequest
 	app.Any("/api/:command", HandleRequest)
+	// Configure the port
+	app.Config.Ports.HTTP = 4000
 	// Start the webserver
 	app.Run()
 }

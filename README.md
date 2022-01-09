@@ -16,6 +16,10 @@ This is much faster and converts everything to easily parsable JSON
 
 - [Requests](docs/Requests.md)
 
+## Docker
+
+This project has a Dockerfile, so you can easily deploy this to docker and get using it straight away
+
 ## ☝ How it works
 
 Each KAMAR command is mapped to a route and will use either GET or POST depending on the method. Soon all the different
