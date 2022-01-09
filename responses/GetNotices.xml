@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<NoticesResults apiversion="4.02.002" portalversion="4.02.080">
+    <AccessLevel>0</AccessLevel>
+    <ErrorCode>0</ErrorCode>
+    <NoticeDate>DD-MM-YYYY</NoticeDate>
+    <NumberRecords>25</NumberRecords>
+    <MeetingNotices>
+        <NumberMeetingRecords>14</NumberMeetingRecords>
+        <Meeting index="14">
+            <Level></Level>
+            <Subject></Subject>
+            <Body></Body>
+            <Teacher></Teacher>
+            <PlaceMeet></PlaceMeet>
+            <DateMeet>YYYY-DD-MM</DateMeet>
+            <TimeMeet></TimeMeet>
+        </Meeting>
+    </MeetingNotices>
+    <GeneralNotices>
+        <NumberGeneralRecords>11</NumberGeneralRecords>
+        <General index="1">
+            <Level></Level>
+            <Subject></Subject>
+            <Body></Body>
+            <Teacher></Teacher>
+        </General>
+        <General index="1">
+            <Level></Level>
+            <Subject></Subject>
+            <Body></Body>
+            <Teacher></Teacher>
+        </General>
+    </GeneralNotices>
+</NoticesResults>

@@ -1,17 +1,5 @@
 package main
 
-type ContentMapping struct {
-	Method     string
-	Command    string
-	Parameters map[string]ParameterMapping
-	Response   func() interface{}
-}
-
-type ParameterMapping struct {
-	Name     string
-	Required bool
-}
-
 type LoginResults struct {
 	AccessLevel int8   `xml:"AccessLevel" json:"access_level"`
 	Error       string `xml:"Error" json:"error,omitempty"`
@@ -93,6 +81,47 @@ type GlobalsDay struct {
 	PeriodTimes []string `xml:"PeriodTime" json:"times"`
 }
 
+type NoticesResult struct {
+	AccessLevel int8   `xml:"AccessLevel" json:"access_level"`
+	Error       string `xml:"Error" json:"error,omitempty"`
+	ErrorCode   int8   `xml:"ErrorCode" json:"error_code"`
+
+	NoticeDate    string `xml:"NoticeDate" json:"date"`
+	NumberRecords int32  `xml:"NumberRecords" json:"number_records"`
+
+	Meetings []MeetingNotice `xml:"MeetingNotices>Meeting" json:"meetings"`
+	Notices  []GeneralNotice `xml:"GeneralNotices>General" json:"notices"`
+}
+
+type MeetingNotice struct {
+	Level     string `xml:"Level" json:"level"`
+	Subject   string `xml:"Subject" json:"subject"`
+	Body      string `xml:"Body" json:"body"`
+	Teacher   string `xml:"Teacher" json:"teacher"`
+	PlaceMeet string `xml:"PlaceMeet" json:"place"`
+	DateMeet  string `xml:"DateMeet" json:"date"`
+	TimeMeet  string `xml:"TimeMeet" json:"time"`
+}
+
+type GeneralNotice struct {
+	Level   string `xml:"Level" json:"level"`
+	Subject string `xml:"Subject" json:"subject"`
+	Body    string `xml:"Body" json:"body"`
+	Teacher string `xml:"Teacher" json:"teacher"`
+}
+
+type ContentMapping struct {
+	Method     string
+	Command    string
+	Parameters map[string]ParameterMapping
+	Response   func() interface{}
+}
+
+type ParameterMapping struct {
+	Name     string
+	Required bool
+}
+
 var Mappings = map[string]ContentMapping{
 	"login": {
 		Method:  "POST",
@@ -107,22 +136,27 @@ var Mappings = map[string]ContentMapping{
 				Required: true,
 			},
 		},
-		Response: func() interface{} {
-			return &LoginResults{}
-		},
+		Response: func() interface{} { return &LoginResults{} },
 	},
 	"settings": {
-		Method:  "GET",
-		Command: "GetSettings",
-		Response: func() interface{} {
-			return &SettingsResults{}
-		},
+		Method:   "GET",
+		Command:  "GetSettings",
+		Response: func() interface{} { return &SettingsResults{} },
 	},
 	"globals": {
+		Method:   "GET",
+		Command:  "GetGlobals",
+		Response: func() interface{} { return &GlobalsResults{} },
+	},
+	"notices": {
 		Method:  "GET",
-		Command: "GetGlobals",
-		Response: func() interface{} {
-			return &GlobalsResults{}
+		Command: "GetNotices",
+		Parameters: map[string]ParameterMapping{
+			"date": {
+				Name:     "Date",
+				Required: true,
+			},
 		},
+		Response: func() interface{} { return &NoticesResult{} },
 	},
 }
