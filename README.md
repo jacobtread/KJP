@@ -2,7 +2,15 @@
 
 (KAMAR JSON Pass-through)
 
+![Go](https://img.shields.io/badge/Powered%20By-Go-29BEB0?style=for-the-badge) 
+
+![LOC](https://tokei.rs/b1/github/jacobtread/KJP)
+
 This project is a server which maps api routes and JSON body / query parameters to KAMAR api commands and fields
+
+This project is written in Go which allows to achieve the high level of speed and low memory usage that it provides. Which makes this an ideal
+use case over KNI and KAW my previous projects which wrapped the data and decoded the XML. This is much faster and converts everything to easily parsable JSON
+
 
 ## ☝ How it works
 
