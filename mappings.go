@@ -207,7 +207,7 @@ type StudentTimetableResults struct {
 
 	TTGrid string `xml:"TTGrid" json:"tt_grid"`
 
-	Students []TimetableStudent `xml:"Students>Student" json:"students"`
+	Student TimetableStudent `xml:"Students>Student" json:"student"`
 }
 
 type TimetableStudent struct {
@@ -320,6 +320,81 @@ type Award struct {
 	Title   string `xml:"Title" json:"title"`
 	Teacher string `xml:"Teacher" json:"teacher,omitempty"`
 	Details string `xml:"Details" json:"details,omitempty"`
+}
+
+type StudentDetailsResults struct {
+	AccessLevel   int8    `xml:"AccessLevel" json:"access_level"`
+	Error         string  `xml:"Error" json:"error,omitempty"`
+	ErrorCode     int8    `xml:"ErrorCode" json:"error_code"`
+	NumberRecords uint16  `xml:"NumberRecords" json:"number_records"`
+	Student       Student `xml:"Students>Student" json:"student"`
+}
+
+type Student struct {
+	KAMARVersion         string `xml:"KAMAR_Version" json:"kamar_version"`
+	StudentID            int32  `xml:"StudentID" json:"student_id"`
+	FirstName            string `xml:"FirstName" json:"first_name"`
+	ForeNames            string `xml:"ForeNames" json:"fore_names"`
+	LastName             string `xml:"LastName" json:"last_name"`
+	FirstNameLegal       string `xml:"FirstNameLegal" json:"first_name_legal"`
+	ForeNamesLegal       string `xml:"ForeNamesLegal" json:"fore_names_legal"`
+	LastNameLegal        string `xml:"LastNameLegal" json:"last_name_legal"`
+	Gender               string `xml:"Gender" json:"gender"`
+	Ethnicity            string `xml:"Ethnicity" json:"ethnicity"`
+	DateBirth            string `xml:"DateBirth" json:"date_birth"`
+	Age                  string `xml:"Age" json:"age"`
+	NSN                  string `xml:"NSN" json:"nsn"`
+	DoctorName           string `xml:"DoctorName" json:"doctor_name"`
+	DoctorPhone          string `xml:"DoctorPhone" json:"doctor_phone"`
+	DoctorAddress        string `xml:"DoctorAddress" json:"doctor_address"`
+	DentistName          string `xml:"DentistName" json:"dentist_name"`
+	DentistPhone         string `xml:"DentistPhone" json:"dentist_phone"`
+	DentistAddress       string `xml:"DentistAddress" json:"dentist_address"`
+	AllowedPanadol       string `xml:"AllowedPanadol" json:"allowed_panadol"`
+	AllowedIbuprofen     string `xml:"AllowedIbuprofen" json:"allowed_ibuprofen"`
+	HealthFlag           string `xml:"HealthFlag" json:"health_flag"`
+	Medical              string `xml:"Medical" json:"medical"`
+	Reactions            string `xml:"Reactions" json:"reactions"`
+	Vaccinations         string `xml:"Vaccinations" json:"vaccinations"`
+	SpecialCircumstances string `xml:"SpecialCircumstances" json:"special_circumstances"`
+	HomePhone            string `xml:"HomePhone" json:"home_phone"`
+	HomeAddress          string `xml:"HomeAddress" json:"home_address"`
+	ParentTitle          string `xml:"ParentTitle" json:"parent_title"`
+	ParentSalutation     string `xml:"ParentSalutation" json:"parent_salutation"`
+	ParentEmail          string `xml:"ParentEmail" json:"parent_email"`
+	MotherRelation       string `xml:"MotherRelation" json:"mother_relation"`
+	MotherName           string `xml:"MotherName" json:"mother_name"`
+	MotherStatus         string `xml:"MotherStatus" json:"mother_status"`
+	MotherEmail          string `xml:"MotherEmail" json:"mother_email"`
+	MotherPhoneHome      string `xml:"MotherPhoneHome" json:"mother_phone_home"`
+	MotherPhoneCell      string `xml:"MotherPhoneCell" json:"mother_phone_cell"`
+	MotherPhoneWork      string `xml:"MotherPhoneWork" json:"mother_phone_work"`
+	MotherPhoneExtn      string `xml:"MotherPhoneExtn" json:"mother_phone_extn"`
+	MotherOccupation     string `xml:"MotherOccupation" json:"mother_occupation"`
+	MotherWorkAddress    string `xml:"MotherWorkAddress" json:"mother_work_address"`
+	MotherNotes          string `xml:"MotherNotes" json:"mother_notes"`
+	FatherRelation       string `xml:"FatherRelation" json:"father_relation"`
+	FatherName           string `xml:"FatherName" json:"father_name"`
+	FatherStatus         string `xml:"FatherStatus" json:"father_status"`
+	FatherEmail          string `xml:"FatherEmail" json:"father_email"`
+	FatherPhoneHome      string `xml:"FatherPhoneHome" json:"father_phone_home"`
+	FatherPhoneCell      string `xml:"FatherPhoneCell" json:"father_phone_cell"`
+	FatherPhoneWork      string `xml:"FatherPhoneWork" json:"father_phone_work"`
+	FatherPhoneExtn      string `xml:"FatherPhoneExtn" json:"father_phone_extn"`
+	FatherOccupation     string `xml:"FatherOccupation" json:"father_occupation"`
+	FatherWorkAddress    string `xml:"FatherWorkAddress" json:"father_work_address"`
+	FatherNotes          string `xml:"FatherNotes" json:"father_notes"`
+	StudentMobile        string `xml:"StudentMobile" json:"student_mobile"`
+	StudentEmail         string `xml:"StudentEmail" json:"student_email"`
+	StudentSchoolEmail   string `xml:"StudentSchoolEmail" json:"student_school_email"`
+	GeneralNotes         string `xml:"GeneralNotes" json:"general_notes"`
+	HealthNotes          string `xml:"HealthNotes" json:"health_notes"`
+	EmergencyName        string `xml:"EmergencyName" json:"emergency_name"`
+	EmergencyPhoneHome   string `xml:"EmergencyPhoneHome" json:"emergency_phone_home"`
+	EmergencyPhoneCell   string `xml:"EmergencyPhoneCell" json:"emergency_phone_cell"`
+	EmergencyPhoneWork   string `xml:"EmergencyPhoneWork" json:"emergency_phone_work"`
+	EmergencyPhoneExtn   string `xml:"EmergencyPhoneExtn" json:"emergency_phone_extn"`
+	EmergencyNotes       string `xml:"EmergencyNotes" json:"emergency_notes"`
 }
 
 type ContentMapping struct {
@@ -448,5 +523,11 @@ var Mappings = map[string]ContentMapping{
 		RequireKey: true,
 		Command:    "GetStudentAwards",
 		Response:   func() interface{} { return &StudentAwardsResults{} },
+	},
+	"student_details": {
+		Method:     "GET",
+		RequireKey: true,
+		Command:    "GetStudentDetails",
+		Response:   func() interface{} { return &StudentDetailsResults{} },
 	},
 }
