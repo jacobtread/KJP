@@ -226,6 +226,102 @@ type TimetableWeek struct {
 	Days []string `xml:",any" json:"days"`
 }
 
+type StudentNCEASummaryResults struct {
+	AccessLevel   int8   `xml:"AccessLevel" json:"access_level"`
+	Error         string `xml:"Error" json:"error,omitempty"`
+	ErrorCode     int8   `xml:"ErrorCode" json:"error_code"`
+	NumberRecords uint16 `xml:"NumberRecords" json:"number_records"`
+
+	Students []NCEAStudent `xml:"Students>Student" json:"students"`
+}
+
+type NCEAStudent struct {
+	CreditsTotal    CreditSummary  `xml:"CreditsTotal" json:"credits_total"`
+	CreditsInternal CreditSummary  `xml:"CreditsInternal" json:"credits_internal"`
+	CreditsExternal CreditSummary  `xml:"CreditsExternal" json:"credits_external"`
+	YearTotals      []YearSummary  `xml:"YearTotals>YearTotal" json:"year_totals"`
+	LevelTotals     []LevelSummary `xml:"LevelTotals>LevelTotal" json:"level_totals"`
+	NCEASummary     NCEASummary    `xml:"NCEA" json:"ncea"`
+}
+
+type CreditSummary struct {
+	NotAchieved uint32 `xml:"NotAchieved" json:"not_achieved"`
+	Achieved    uint32 `xml:"Achieved" json:"achieved"`
+	Merit       uint32 `xml:"Merit" json:"merit"`
+	Excellence  uint32 `xml:"Excellence" json:"excellence"`
+	Total       uint32 `xml:"Total" json:"total"`
+	Attempted   uint32 `xml:"Attempted" json:"attempted"`
+}
+
+type YearSummary struct {
+	Year        string `xml:"Year" json:"year"`
+	NotAchieved uint32 `xml:"NotAchieved" json:"not_achieved"`
+	Achieved    uint32 `xml:"Achieved" json:"achieved"`
+	Merit       uint32 `xml:"Merit" json:"merit"`
+	Excellence  uint32 `xml:"Excellence" json:"excellence"`
+	Total       uint32 `xml:"Total" json:"total"`
+	Attempted   uint32 `xml:"Attempted" json:"attempted"`
+}
+
+type LevelSummary struct {
+	Level       uint16 `xml:"Level" json:"level"`
+	NotAchieved uint32 `xml:"NotAchieved" json:"not_achieved"`
+	Achieved    uint32 `xml:"Achieved" json:"achieved"`
+	Merit       uint32 `xml:"Merit" json:"merit"`
+	Excellence  uint32 `xml:"Excellence" json:"excellence"`
+	Total       uint32 `xml:"Total" json:"total"`
+	Attempted   uint32 `xml:"Attempted" json:"attempted"`
+}
+
+type NCEASummary struct {
+	L1           string `xml:"L1NCEA" json:"level_1"`
+	L2           string `xml:"L2NCEA" json:"level_2"`
+	L3           string `xml:"L3NCEA" json:"level_3"`
+	UELiteracy   string `xml:"NCEAUELIT" json:"ue_literacy"`
+	Numeracy     string `xml:"NCEANUM" json:"numeracy"`
+	Lvl1Literacy string `xml:"NCEAL1LIT" json:"l1_literacy"`
+}
+
+type StudentGroupsResults struct {
+	AccessLevel   int8               `xml:"AccessLevel" json:"access_level"`
+	Error         string             `xml:"Error" json:"error,omitempty"`
+	ErrorCode     int8               `xml:"ErrorCode" json:"error_code"`
+	NumberRecords uint16             `xml:"NumberRecords" json:"number_records"`
+	Years         []StudentGroupYear `xml:"Years>Year" json:"years"`
+}
+
+type StudentGroupYear struct {
+	Grid         string  `xml:"Grid" json:"grid"`
+	NumberGroups uint16  `xml:"NumberGroups" json:"number_groups"`
+	Groups       []Group `xml:"Groups>Group" json:"groups"`
+}
+
+type Group struct {
+	Name    string `xml:"Name" json:"name"`
+	Teacher string `xml:"Teacher" json:"teacher"`
+}
+
+type StudentAwardsResults struct {
+	AccessLevel   int8        `xml:"AccessLevel" json:"access_level"`
+	Error         string      `xml:"Error" json:"error,omitempty"`
+	ErrorCode     int8        `xml:"ErrorCode" json:"error_code"`
+	NumberRecords uint16      `xml:"NumberRecords" json:"number_records"`
+	NumberYears   uint16      `xml:"NumberYears" json:"number_years"`
+	Years         []AwardYear `xml:"Years>Year" json:"years"`
+}
+
+type AwardYear struct {
+	Grid         string  `xml:"Grid" json:"grid"`
+	NumberAwards uint16  `xml:"NumberAwards" json:"number_awards"`
+	Awards       []Award `xml:"Awards>Award"`
+}
+
+type Award struct {
+	Title   string `xml:"Title" json:"title"`
+	Teacher string `xml:"Teacher" json:"teacher,omitempty"`
+	Details string `xml:"Details" json:"details,omitempty"`
+}
+
 type ContentMapping struct {
 	Method     string
 	Command    string
@@ -334,5 +430,23 @@ var Mappings = map[string]ContentMapping{
 			},
 		},
 		Response: func() interface{} { return &StudentTimetableResults{} },
+	},
+	"student_ncea_summary": {
+		Method:     "GET",
+		RequireKey: true,
+		Command:    "GetStudentNCEASummary",
+		Response:   func() interface{} { return &StudentNCEASummaryResults{} },
+	},
+	"student_groups": {
+		Method:     "GET",
+		RequireKey: true,
+		Command:    "GetStudentGroups",
+		Response:   func() interface{} { return &StudentGroupsResults{} },
+	},
+	"student_awards": {
+		Method:     "GET",
+		RequireKey: true,
+		Command:    "GetStudentAwards",
+		Response:   func() interface{} { return &StudentAwardsResults{} },
 	},
 }

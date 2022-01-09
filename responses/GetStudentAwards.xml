@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StudentAwardsResults apiversion="4.02.003" portalversion="2021.11.014">
+    <AccessLevel>2</AccessLevel>
+    <ErrorCode>0</ErrorCode>
+    <NumberRecords>xx</NumberRecords>
+    <NumberYears>x<NumberYears>
+    <Years>
+        <Year index="1">
+            <Grid>2020TT</Grid>
+            <NumberAwards>x</NumberAwards>
+            <Awards>
+                <Award index="1">
+                    <Title></Title>
+                    <Teacher></Teacher>
+                    <Details></Details>
+                </Award>
+            </Awards>
+        </Year>
+        <Year index="2">
+            <Grid>2019TT</Grid>
+            <NumberAwards>16</NumberAwards>
+            <Awards>
+                <Award index="1">
+                    <Title></Title>
+                    <Teacher></Teacher>
+                    <Details></Details>
+                </Award>
+            </Awards>
+        </Year>
+        <Year index="3">
+            <Grid>2018TT</Grid>
+            <NumberAwards>4</NumberAwards>
+            <Awards>
+                <Award index="1">
+                    <Title></Title>
+                    <Teacher></Teacher>
+                    <Details></Details>
+                </Award>
+            </Awards>
+        </Year>
+    </Years>
+</StudentAwardsResults>

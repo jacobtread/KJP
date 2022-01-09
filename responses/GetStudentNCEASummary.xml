@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StudentNCEASummaryResults apiversion="4.02.003" portalversion="2021.11.014">
+    <AccessLevel>2</AccessLevel>
+    <ErrorCode>0</ErrorCode>
+    <NumberRecords>1</NumberRecords>
+    <Students>
+        <Student index="1">
+            <CreditsTotal>
+                <NotAchieved></NotAchieved>
+                <Achieved></Achieved>
+                <Merit></Merit>
+                <Excellence></Excellence>
+                <Total></Total>
+                <Attempted></Attempted>
+            </CreditsTotal>
+            <CreditsInternal>
+                <NotAchieved></NotAchieved>
+                <Achieved></Achieved>
+                <Merit></Merit>
+                <Excellence></Excellence>
+                <Total></Total>
+                <Attempted></Attempted>
+            </CreditsInternal>
+            <CreditsExternal>
+                <NotAchieved></NotAchieved>
+                <Achieved></Achieved>
+                <Merit></Merit>
+                <Total></Total>
+                <Attempted></Attempted>
+            </CreditsExternal>
+            <YearTotals>
+                <YearTotal index="1">
+                    <Year>2022</Year>
+                </YearTotal>
+                <YearTotal index="2">
+                    <Year>2021</Year>
+                </YearTotal>
+                <YearTotal index="3">
+                    <Year>2020</Year>
+                </YearTotal>
+                <YearTotal index="4">
+                    <Year>2019</Year>
+                </YearTotal>
+                <YearTotal index="5">
+                    <Year>2018</Year>
+                </YearTotal>
+            </YearTotals>
+            <LevelTotals>
+                <LevelTotal index="1">
+                    <Level></Level>
+                    <NotAchieved></NotAchieved>
+                    <Achieved></Achieved>
+                    <Merit></Merit>
+                    <Excellence></Excellence>
+                    <Total></Total>
+                    <Attempted></Attempted>
+                </LevelTotal>
+                <LevelTotal index="2">
+                    <Level></Level>
+                    <NotAchieved></NotAchieved>
+                    <Achieved></Achieved>
+                    <Merit></Merit>
+                    <Excellence></Excellence>
+                    <Total></Total>
+                    <Attempted></Attempted>
+                </LevelTotal>
+                <LevelTotal index="3">
+                    <Level></Level>
+                </LevelTotal>
+                <LevelTotal index="4">
+                    <Level></Level>
+                </LevelTotal>
+                <LevelTotal index="5">
+                    <Level></Level>
+                </LevelTotal>
+            </LevelTotals>
+            <NCEA>
+                <L1NCEA>YES</L1NCEA>
+                <L2NCEA>YES</L2NCEA>
+                <L3NCEA>NO</L3NCEA>
+                <NCEAUELIT>Yes</NCEAUELIT>
+                <NCEANUM>Yes : 2020</NCEANUM>
+                <NCEAL1LIT>Yes : 2020</NCEAL1LIT>
+            </NCEA>
+        </Student>
+    </Students>
+</StudentNCEASummaryResults>

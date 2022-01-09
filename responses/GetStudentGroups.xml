@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StudentGroupsResults apiversion="4.02.003" portalversion="2021.11.014">
+    <AccessLevel>2</AccessLevel>
+    <ErrorCode>0</ErrorCode>
+    <NumberRecords>17</NumberRecords>
+    <NumberYears>2</NumberYears>
+    <Years>
+        <Year index="1">
+            <Grid>2021TT</Grid>
+            <NumberGroups>1</NumberGroups>
+            <Groups>
+                <Group index="1">
+                    <Name></Name>
+                    <Teacher></Teacher>
+                </Group>
+            </Groups>
+        </Year>
+        <Year index="2">
+            <Grid>2020TT</Grid>
+            <NumberGroups>1</NumberGroups>
+            <Groups>
+                <Group index="1">
+                    <Name></Name>
+                    <Teacher></Teacher>
+                </Group>
+            </Groups>
+        </Year>
+    </Years>
+</StudentGroupsResults>

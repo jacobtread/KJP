@@ -61,15 +61,15 @@ The following is a list of the API routes and the ones marked with a checkmark h
 - [x] GetCalendar
 - [x] GetEvents
 - [x] GetStudentTimetable
-- [ ] GetStudentNCEASummary
-- [ ] GetStudentGroups
-- [ ] GetStudentAwards
+- [x] GetStudentNCEASummary
+- [x] GetStudentGroups
+- [x] GetStudentAwards
+- [ ] GetStudentDetails
+- [ ] GetStudentAbsentStatus
 - [ ] GetTeacherAbsLog
 - [ ] SearchStudents
-- [ ] GetStudentDetails
 - [ ] GetStudentPastoral
 - [ ] GetUserDetails
-- [ ] GetStudentAbsentStatus
 - [ ] GetTeacherTimetable
 
 ### Common Error Codes
