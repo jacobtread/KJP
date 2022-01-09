@@ -397,6 +397,35 @@ type Student struct {
 	EmergencyNotes       string `xml:"EmergencyNotes" json:"emergency_notes"`
 }
 
+type StudentAbsentStatus struct {
+	AccessLevel   int8   `xml:"AccessLevel" json:"access_level"`
+	Error         string `xml:"Error" json:"error,omitempty"`
+	ErrorCode     int8   `xml:"ErrorCode" json:"error_code"`
+	NumberRecords uint16 `xml:"NumberRecords" json:"number_records"`
+
+	Student AbsenceStudent `xml:"Students>Student" json:"student"`
+}
+
+type AbsenceStudent struct {
+	HJustified   int32 `xml:"HalfDaysJ" json:"hd_justified"`
+	HUnjustified int32 `xml:"HalfDaysU" json:"hd_unjustified"`
+	HOverseas    int32 `xml:"HalfDaysO" json:"hd_overseas"`
+	HTotal       int32 `xml:"HalfDaysT" json:"hd_total"`
+	HOpen        int32 `xml:"HalfDaysOpen" json:"hd_open"`
+
+	FJustified   int32 `xml:"FullDaysJ" json:"justified"`
+	FUnjustified int32 `xml:"FullDaysU" json:"unjustified"`
+	FOverseas    int32 `xml:"FullDaysO" json:"overseas"`
+	FTotal       int32 `xml:"FullDaysT" json:"total"`
+	FOpen        int32 `xml:"FullDaysOpen" json:"open"`
+
+	PercentJustified   int16 `xml:"PctgeJ" json:"percent_justified"`
+	PercentUnjustified int16 `xml:"PctgeU" json:"percent_unjustified"`
+	PercentOverseas    int16 `xml:"PctgeO" json:"percent_overseas"`
+	PercentTotal       int16 `xml:"PctgeT" json:"percent_total"`
+	PercentPresent     int16 `xml:"PctgeP" json:"percent_present"`
+}
+
 type ContentMapping struct {
 	Method     string
 	Command    string
@@ -529,5 +558,17 @@ var Mappings = map[string]ContentMapping{
 		RequireKey: true,
 		Command:    "GetStudentDetails",
 		Response:   func() interface{} { return &StudentDetailsResults{} },
+	},
+	"student_absence_stats": {
+		Method:     "GET",
+		RequireKey: true,
+		Command:    "GetStudentAbsenceStats",
+		Parameters: map[string]ParameterMapping{
+			"grid": {
+				Name:     "Grid",
+				Required: true,
+			},
+		},
+		Response: func() interface{} { return &StudentAbsentStatus{} },
 	},
 }

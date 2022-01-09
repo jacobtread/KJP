@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StudentAbsenceStatsResults apiversion="4.02.003" portalversion="2021.11.014">
+    <AccessLevel>2</AccessLevel>
+    <ErrorCode>0</ErrorCode>
+    <NumberRecords>1</NumberRecords>
+    <Students>
+        <Student index="1">
+            <HalfDaysJ></HalfDaysJ>
+            <HalfDaysU><HalfDaysU>
+            <HalfDaysO></HalfDaysO>
+            <HalfDaysT></HalfDaysT>
+            <HalfDaysOpen></HalfDaysOpen>
+            <FullDaysJ></FullDaysJ>
+            <FullDaysU></FullDaysU>
+            <FullDaysO></FullDaysO>
+            <FullDaysT></FullDaysT>
+            <FullDaysOpen></FullDaysOpen>
+            <PctgeJ></PctgeJ>
+            <PctgeU></PctgeU>
+            <PctgeO></PctgeO>
+            <PctgeT></PctgeT>
+            <PctgeP></PctgeP>
+        </Student>
+    </Students>
+</StudentAbsenceStatsResults>
