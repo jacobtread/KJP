@@ -138,6 +138,20 @@ type Result struct {
 	ResultPublished string `xml:"ResultPublished" json:"result_published"`
 }
 
+type StudentAttendanceResults struct {
+	AccessLevel int8   `xml:"AccessLevel" json:"access_level"`
+	Error       string `xml:"Error" json:"error,omitempty"`
+	ErrorCode   int8   `xml:"ErrorCode" json:"error_code"`
+
+	NumberRecords uint8            `xml:"NumberRecords" json:"number_records"`
+	Weeks         []AttendanceWeek `xml:"Weeks>Week" json:"weeks"`
+}
+
+type AttendanceWeek struct {
+	WeekStart string   `xml:"WeekStart" json:"start"`
+	Days      []string `xml:"Days>Day" json:"days"`
+}
+
 type ContentMapping struct {
 	Method     string
 	Command    string
@@ -193,5 +207,17 @@ var Mappings = map[string]ContentMapping{
 		RequireKey: true,
 		Command:    "GetStudentResults",
 		Response:   func() interface{} { return &StudentResultsResults{} },
+	},
+	"student_attendance": {
+		Method:     "GET",
+		RequireKey: true,
+		Command:    "GetStudentAttendance",
+		Response:   func() interface{} { return &StudentAttendanceResults{} },
+		Parameters: map[string]ParameterMapping{
+			"grid": {
+				Name:     "Grid",
+				Required: true,
+			},
+		},
 	},
 }

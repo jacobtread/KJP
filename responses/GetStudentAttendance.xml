@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StudentAttendanceResults apiversion="4.02.002" portalversion="4.02.080">
+    <AccessLevel>2</AccessLevel>
+    <ErrorCode>0</ErrorCode>
+    <NumberRecords>12</NumberRecords>
+    <Weeks>
+        <Week index="1">
+            <WeekStart>2020-01-27</WeekStart>
+            <Days>
+                <Day index="1"></Day>
+                <Day index="2"></Day>
+                <Day index="3"></Day>
+                <Day index="4"></Day>
+                <Day index="5"></Day>
+            </Days>
+        </Week>
+        <Week index="2">
+            <WeekStart>2020-02-03</WeekStart>
+            <Days>
+                <Day index="1">.PPP.PP.P.</Day>
+                <Day index="2">.UPP.PP.P.</Day>
+                <Day index="3">.PPP.PP.P.</Day>
+                <Day index="4"></Day>
+                <Day index="5">.PPP.PP.P.</Day>
+            </Days>
+        </Week>
+        <Week index="3">
+            <WeekStart>2020-02-10</WeekStart>
+            <Days>
+                <Day index="1">.PPP..P.P.</Day>
+                <Day index="2">..PP.PPPP.</Day>
+                <Day index="3">.PPP.PP.P.</Day>
+                <Day index="4">.PPP.PP.P.</Day>
+                <Day index="5">..JJ..J.J.</Day>
+            </Days>
+        </Week>
+        <Week index="4">
+            <WeekStart>2020-02-17</WeekStart>
+            <Days>
+                <Day index="1">.PPP.PP.P.</Day>
+                <Day index="2">..PP.PPPP.</Day>
+                <Day index="3">.JJJ.JJ.J.</Day>
+                <Day index="4">.UPP.PP.P.</Day>
+                <Day index="5"></Day>
+            </Days>
+        </Week>
+        <Week index="5">
+            <WeekStart>2020-02-24</WeekStart>
+            <Days>
+                <Day index="1">.JJJ.JJ.J.</Day>
+                <Day index="2">..JJ.JJJJ.</Day>
+                <Day index="3">.PPP.PP.P.</Day>
+                <Day index="4">.PPP.PP.P.</Day>
+                <Day index="5">..JJ..J.J.</Day>
+            </Days>
+        </Week>
+        <Week index="6">
+            <WeekStart>2020-03-02</WeekStart>
+            <Days>
+                <Day index="1">.PPP.PP.P.</Day>
+                <Day index="2">P.PP.PPPP.</Day>
+                <Day index="3">.JJJ.JJ.J.</Day>
+                <Day index="4">.PPP.PP.P.</Day>
+                <Day index="5">.PPP.PP.P.</Day>
+            </Days>
+        </Week>
+        <Week index="7">
+            <WeekStart>2020-03-09</WeekStart>
+            <Days>
+                <Day index="1">.PPP.PP.P.</Day>
+                <Day index="2">P.UP.PPPP.</Day>
+                <Day index="3">.UPP.PP.P.</Day>
+                <Day index="4">.PPP.PP.P.</Day>
+                <Day index="5">.PPP.PP.P.</Day>
+            </Days>
+        </Week>
+        <Week index="8">
+            <WeekStart>2020-03-16</WeekStart>
+            <Days>
+                <Day index="1">.UPP.PP.P.</Day>
+                <Day index="2">..PP.PPPP.</Day>
+                <Day index="3">.PPP.PP.P.</Day>
+                <Day index="4">.UPP.PP.P.</Day>
+                <Day index="5">.PPP.PP.P.</Day>
+            </Days>
+        </Week>
+        <Week index="9">
+            <WeekStart>2020-03-23</WeekStart>
+            <Days>
+                <Day index="1">.PPP.PP.P.</Day>
+                <Day index="2">..PP.PPPP.</Day>
+                <Day index="3">.PPP.PP.P.</Day>
+                <Day index="4">.PPP.PP.P.</Day>
+                <Day index="5">.PPP.PP.P.</Day>
+            </Days>
+        </Week>
+        <Week index="10">
+            <WeekStart>2020-03-30</WeekStart>
+            <Days>
+                <Day index="1"></Day>
+                <Day index="2"></Day>
+                <Day index="3"></Day>
+                <Day index="4"></Day>
+                <Day index="5">.....PP.P.</Day>
+            </Days>
+        </Week>
+        <Week index="11">
+            <WeekStart>2020-04-13</WeekStart>
+            <Days>
+                <Day index="1"></Day>
+                <Day index="2"></Day>
+                <Day index="3">.PPP.PP.P.</Day>
+                <Day index="4">.PPP.PP.P.</Day>
+                <Day index="5">.PPP.PP.P.</Day>
+            </Days>
+        </Week>
+        <Week index="12">
+            <WeekStart>2020-06-15</WeekStart>
+            <Days>
+                <Day index="1"></Day>
+                <Day index="2"></Day>
+                <Day index="3"></Day>
+                <Day index="4"></Day>
+                <Day index="5">.PPP.P....</Day>
+            </Days>
+        </Week>
+    </Weeks>
+</StudentAttendanceResults>

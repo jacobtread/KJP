@@ -126,7 +126,9 @@ func HandleRequest(context aero.Context) error {
 		return context.JSON(ErrorResponse{Error: "Failed to get response from KAMAR", Code: 0})
 	}
 
-	fmt.Println(string(res))
+	// Debug printy boi for response
+	println(string(res))
+
 	var out = mapping.Response()
 	err = xml.Unmarshal(res, &out)
 	if err != nil {
@@ -134,8 +136,6 @@ func HandleRequest(context aero.Context) error {
 		context.SetStatus(500)
 		return context.JSON(ErrorResponse{Error: "Failed to map response from KAMAR", Code: 0})
 	}
-
-	fmt.Println(out)
 
 	return context.JSON(out)
 }
