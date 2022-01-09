@@ -161,6 +161,34 @@ type CalendarResults struct {
 	Days          []CalendarDay `xml:"Days>Day" json:"days"`
 }
 
+type EventsResults struct {
+	AccessLevel int8   `xml:"AccessLevel" json:"access_level"`
+	Error       string `xml:"Error" json:"error,omitempty"`
+	ErrorCode   int8   `xml:"ErrorCode" json:"error_code"`
+
+	NumberRecords uint16  `xml:"NumberRecords" json:"number_records"`
+	Events        []Event `xml:"Events>Event" json:"events"`
+}
+
+type Event struct {
+	Title        string `xml:"Title" json:"title"`
+	Location     string `xml:"Location" json:"location"`
+	Details      string `xml:"Details" json:"details"`
+	Priority     int8   `xml:"Priority" json:"priority"`
+	Public       bool   `xml:"Public" json:"public"`
+	Student      bool   `xml:"Student" json:"student"`
+	CG1          bool   `xml:"CG1" json:"cg_1"`
+	CG2          bool   `xml:"CG2" json:"cg_2"`
+	Staff        bool   `xml:"Staff" json:"staff"`
+	Color        string `xml:"Color" json:"color"`
+	ColorLabel   string `xml:"ColorLabel" json:"color_label"`
+	DateTimeInfo string `xml:"DateTimeInfo,omitempty" json:"date_time,omitempty"`
+	TimeStart    string `xml:"DateTimeStart,omitempty" json:"time_start,omitempty"`
+	TimeFinish   string `xml:"DateTimeFinish,omitempty" json:"time_finish,omitempty"`
+	DateStart    string `xml:"Start" json:"date_start"`
+	DateFinish   string `xml:"Finish" json:"date_finish"`
+}
+
 type CalendarDay struct {
 	Date     string `xml:"Date" json:"date"`
 	Status   string `xml:"Status" json:"status"`
@@ -251,5 +279,20 @@ var Mappings = map[string]ContentMapping{
 			},
 		},
 		Response: func() interface{} { return &CalendarResults{} },
+	},
+	"events": {
+		Method:  "GET",
+		Command: "GetEvents",
+		Parameters: map[string]ParameterMapping{
+			"start": {
+				Name:     "DateStart",
+				Required: true,
+			},
+			"end": {
+				Name:     "DateFinish",
+				Required: false,
+			},
+		},
+		Response: func() interface{} { return &EventsResults{} },
 	},
 }

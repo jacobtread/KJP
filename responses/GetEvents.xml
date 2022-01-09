@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EventsResults apiversion="4.02.003" portalversion="2021.11.014">
+    <AccessLevel>0</AccessLevel>
+    <ErrorCode>0</ErrorCode>
+    <NumberRecords>504</NumberRecords>
+    <Events>
+        <Event index="1">
+            <perm>p1</perm>
+            <showAll>a1</showAll>
+            <Title></Title>
+            <Location></Location>
+            <Details></Details>
+            <Priority>2</Priority>
+            <Public>1</Public>
+            <Student>1</Student>
+            <CG1>1</CG1>
+            <CG2>1</CG2>
+            <Staff>1</Staff>
+            <Colour>black</Colour>
+            <ColourLabel>Black</ColourLabel>
+            <DateTimeInfo>`Wednesday, 13th March</DateTimeInfo>
+            <DateTimeStart></DateTimeStart>
+            <DateTimeFinish></DateTimeFinish>
+            <Start>2019-03-13</Start>
+            <Finish>2019-03-13</Finish>
+        </Event>
+    </Events>
+</EventsResults>
