@@ -66,7 +66,7 @@ type GlobalsResults struct {
 	Error       string `xml:"Error" json:"error,omitempty"`
 	ErrorCode   int8   `xml:"ErrorCode" json:"error_code"`
 
-	NumberRecords     int16              `xml:"NumberRecords" json:"number_records"`
+	NumberRecords     uint16             `xml:"NumberRecords" json:"number_records"`
 	PeriodDefinitions []PeriodDefinition `xml:"PeriodDefinitions>PeriodDefinition" json:"period_definitions"`
 	StartTimes        []GlobalsDay       `xml:"StartTimes>Day" json:"start_times"`
 }
@@ -77,7 +77,7 @@ type PeriodDefinition struct {
 }
 
 type GlobalsDay struct {
-	Index       int16    `xml:"index,attr" json:"index"`
+	Index       uint16   `xml:"index,attr" json:"index"`
 	PeriodTimes []string `xml:"PeriodTime" json:"times"`
 }
 
@@ -87,7 +87,7 @@ type NoticesResult struct {
 	ErrorCode   int8   `xml:"ErrorCode" json:"error_code"`
 
 	NoticeDate    string `xml:"NoticeDate" json:"date"`
-	NumberRecords int32  `xml:"NumberRecords" json:"number_records"`
+	NumberRecords uint32 `xml:"NumberRecords" json:"number_records"`
 
 	Meetings []MeetingNotice `xml:"MeetingNotices>Meeting" json:"meetings"`
 	Notices  []GeneralNotice `xml:"GeneralNotices>General" json:"notices"`
@@ -108,6 +108,34 @@ type GeneralNotice struct {
 	Subject string `xml:"Subject" json:"subject"`
 	Body    string `xml:"Body" json:"body"`
 	Teacher string `xml:"Teacher" json:"teacher"`
+}
+
+type StudentResultsResults struct {
+	AccessLevel int8   `xml:"AccessLevel" json:"access_level"`
+	Error       string `xml:"Error" json:"error,omitempty"`
+	ErrorCode   int8   `xml:"ErrorCode" json:"error_code"`
+
+	NumberRecords uint16 `xml:"NumberRecords" json:"number_records"`
+	StudentID     uint32 `xml:"StudentID" json:"student_id"`
+
+	Results []ResultLevel `xml:"ResultLevels>ResultLevel" json:"results"`
+}
+
+type ResultLevel struct {
+	NumberResults uint32   `xml:"NumberResults" json:"number_results"`
+	NCEALevel     uint8    `xml:"NCEALevel" json:"ncea_level"`
+	Results       []Result `xml:"Results>Result" json:"results"`
+}
+
+type Result struct {
+	Identifier      string `xml:"Number" json:"id"`
+	Version         uint16 `xml:"Version" json:"version"`
+	Grade           string `xml:"Grade" json:"grade"`
+	Title           string `xml:"Title" json:"title"`
+	SubField        string `xml:"SubField" json:"sub_field"`
+	Credits         uint16 `xml:"Credits" json:"credits"`
+	CreditsPassed   uint16 `xml:"CreditsPassed" json:"credits_passed"`
+	ResultPublished string `xml:"ResultPublished" json:"result_published"`
 }
 
 type ContentMapping struct {
@@ -159,5 +187,11 @@ var Mappings = map[string]ContentMapping{
 			},
 		},
 		Response: func() interface{} { return &NoticesResult{} },
+	},
+	"student_results": {
+		Method:     "GET",
+		RequireKey: true,
+		Command:    "GetStudentResults",
+		Response:   func() interface{} { return &StudentResultsResults{} },
 	},
 }

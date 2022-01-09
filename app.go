@@ -114,6 +114,7 @@ func HandleRequest(context aero.Context) error {
 	}
 
 	data := url.Values{}
+	data.Set("Key", key)
 	data.Set("Command", mapping.Command)
 	for key, value := range params {
 		data.Set(key, value.(string))

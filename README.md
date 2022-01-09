@@ -56,7 +56,7 @@ The following is a list of the API routes and the ones marked with a checkmark h
 - [x] GetSettings
 - [x] GetGlobals
 - [x] GetNotices
-- [ ] GetStudentResults
+- [x] GetStudentResults
 - [ ] GetStudentAttendance
 - [ ] GetCalendar
 - [ ] GetEvents
