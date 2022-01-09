@@ -64,8 +64,10 @@ The following is a list of the API routes and the ones marked with a checkmark h
 - [x] GetStudentNCEASummary
 - [x] GetStudentGroups
 - [x] GetStudentAwards
-- [ ] GetStudentDetails
+- [x] GetStudentDetails
 - [ ] GetStudentAbsentStatus
+
+The following routes cannot be mapped as I do not have the required access levels to map them
 - [ ] GetTeacherAbsLog
 - [ ] SearchStudents
 - [ ] GetStudentPastoral
