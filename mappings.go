@@ -62,11 +62,11 @@ type SettingsCalendar struct {
 }
 
 type GlobalsResults struct {
-	AccessLevel int8   `xml:"AccessLevel" json:"access_level"`
-	Error       string `xml:"Error" json:"error,omitempty"`
-	ErrorCode   int8   `xml:"ErrorCode" json:"error_code"`
+	AccessLevel   int8   `xml:"AccessLevel" json:"access_level"`
+	Error         string `xml:"Error" json:"error,omitempty"`
+	ErrorCode     int8   `xml:"ErrorCode" json:"error_code"`
+	NumberRecords uint16 `xml:"NumberRecords" json:"number_records"`
 
-	NumberRecords     uint16             `xml:"NumberRecords" json:"number_records"`
 	PeriodDefinitions []PeriodDefinition `xml:"PeriodDefinitions>PeriodDefinition" json:"period_definitions"`
 	StartTimes        []GlobalsDay       `xml:"StartTimes>Day" json:"start_times"`
 }
@@ -82,15 +82,14 @@ type GlobalsDay struct {
 }
 
 type NoticesResult struct {
-	AccessLevel int8   `xml:"AccessLevel" json:"access_level"`
-	Error       string `xml:"Error" json:"error,omitempty"`
-	ErrorCode   int8   `xml:"ErrorCode" json:"error_code"`
-
-	NoticeDate    string `xml:"NoticeDate" json:"date"`
+	AccessLevel   int8   `xml:"AccessLevel" json:"access_level"`
+	Error         string `xml:"Error" json:"error,omitempty"`
+	ErrorCode     int8   `xml:"ErrorCode" json:"error_code"`
 	NumberRecords uint32 `xml:"NumberRecords" json:"number_records"`
 
-	Meetings []MeetingNotice `xml:"MeetingNotices>Meeting" json:"meetings"`
-	Notices  []GeneralNotice `xml:"GeneralNotices>General" json:"notices"`
+	NoticeDate string          `xml:"NoticeDate" json:"date"`
+	Meetings   []MeetingNotice `xml:"MeetingNotices>Meeting" json:"meetings"`
+	Notices    []GeneralNotice `xml:"GeneralNotices>General" json:"notices"`
 }
 
 type MeetingNotice struct {
@@ -111,14 +110,13 @@ type GeneralNotice struct {
 }
 
 type StudentResultsResults struct {
-	AccessLevel int8   `xml:"AccessLevel" json:"access_level"`
-	Error       string `xml:"Error" json:"error,omitempty"`
-	ErrorCode   int8   `xml:"ErrorCode" json:"error_code"`
-
+	AccessLevel   int8   `xml:"AccessLevel" json:"access_level"`
+	Error         string `xml:"Error" json:"error,omitempty"`
+	ErrorCode     int8   `xml:"ErrorCode" json:"error_code"`
 	NumberRecords uint16 `xml:"NumberRecords" json:"number_records"`
-	StudentID     uint32 `xml:"StudentID" json:"student_id"`
 
-	Results []ResultLevel `xml:"ResultLevels>ResultLevel" json:"results"`
+	StudentID uint32        `xml:"StudentID" json:"student_id"`
+	Results   []ResultLevel `xml:"ResultLevels>ResultLevel" json:"results"`
 }
 
 type ResultLevel struct {
@@ -199,6 +197,33 @@ type CalendarDay struct {
 	WeekA    uint16 `xml:"WeekA,omitempty" json:"week_a,omitempty"`
 	WeekYear uint16 `xml:"WeekYear,omitempty" json:"week_year,omitempty"`
 	TermYear uint16 `xml:"TermYear,omitempty" json:"term_year,omitempty"`
+}
+
+type StudentTimetableResults struct {
+	AccessLevel   int8   `xml:"AccessLevel" json:"access_level"`
+	Error         string `xml:"Error" json:"error,omitempty"`
+	ErrorCode     int8   `xml:"ErrorCode" json:"error_code"`
+	NumberRecords uint16 `xml:"NumberRecords" json:"number_records"`
+
+	TTGrid string `xml:"TTGrid" json:"tt_grid"`
+
+	Students []TimetableStudent `xml:"Students>Student" json:"students"`
+}
+
+type TimetableStudent struct {
+	ID    int32  `xml:"IDNumber" json:"id"`
+	Level int8   `xml:"Level" json:"level"`
+	Tutor string `xml:"Tutor" json:"tutor"`
+
+	TimetableData TimetableWeeks `xml:"TimetableData" json:"data"`
+}
+
+type TimetableWeeks struct {
+	Weeks []TimetableWeek `xml:",any" json:"weeks"`
+}
+
+type TimetableWeek struct {
+	Days []string `xml:",any" json:"days"`
 }
 
 type ContentMapping struct {
@@ -294,5 +319,20 @@ var Mappings = map[string]ContentMapping{
 			},
 		},
 		Response: func() interface{} { return &EventsResults{} },
+	},
+	"student_timetable": {
+		Method:  "GET",
+		Command: "GetStudentTimetable",
+		Parameters: map[string]ParameterMapping{
+			"grid": {
+				Name:     "Grid",
+				Required: true,
+			},
+			"id": {
+				Name:     "StudentID",
+				Required: false,
+			},
+		},
+		Response: func() interface{} { return &StudentTimetableResults{} },
 	},
 }
