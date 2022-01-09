@@ -1,11 +1,9 @@
 package main
 
 import (
-	"encoding/json"
 	"encoding/xml"
 	"fmt"
 	"github.com/aerogo/aero"
-	"io"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -97,18 +95,11 @@ func HandleRequest(context aero.Context) error {
 		// This map is used to store the unprocessed JSON
 		rawData := map[string]interface{}{}
 		// Get the bytes of the request body
-		bytes, err := context.Request().Body().Bytes()
-		if err != nil { // If we failed to get the body bytes
+		rawData, err := context.Request().Body().JSONObject()
+		if err != nil { // If we failed to get the body JSON
 			context.SetStatus(400) // Set the status to 400 Bad Request
 			// Let them know they are missing a body when its required
-			return context.JSON(ErrorResponse{Error: "Post request missing request body.", Code: 0})
-		}
-		// Deserialize the JSON body
-		err = json.Unmarshal(bytes, &rawData)
-		if err != nil { // If we failed to deserialize the body
-			context.SetStatus(400) // Set the status to 400 Bad Request
-			// Let them know the JSON they provided is malformed
-			return context.JSON(ErrorResponse{Error: "Malformed request body. Expected JSON", Code: 0})
+			return context.JSON(ErrorResponse{Error: "Post request body invalid.", Code: 0})
 		}
 		// Loop over all the mapping parameters
 		for key, value := range mapping.Parameters {
@@ -167,8 +158,11 @@ func HandleRequest(context aero.Context) error {
 
 // MakeRequest Makes an HTTP request to the provided url with the provided data and returns its bytes
 func MakeRequest(endpoint string, ip string, data *url.Values) ([]byte, error) {
+	var transport http.RoundTripper = &http.Transport{
+		DisableKeepAlives: true,
+	}
 	// Create a new HTTP client
-	client := &http.Client{}
+	client := &http.Client{Transport: transport}
 	// Encode the body data
 	encoded := data.Encode()
 	// Create a new POST request with the encoded body
@@ -192,17 +186,13 @@ func MakeRequest(endpoint string, ip string, data *url.Values) ([]byte, error) {
 	if err != nil { // If we encountered an error
 		return nil, err // Return the error
 	}
-	// Deffer and close the body
-	defer func(Body io.ReadCloser) {
-		err := Body.Close()
-		if err != nil {
-		}
-	}(res.Body)
 	// Read all the body data
 	body, err := ioutil.ReadAll(res.Body)
-	if err != nil { // If we encountered an error
+	_ = res.Body.Close() // Close request body
+	if err != nil {      // If we encountered an error
 		return nil, err // Return the error
 	}
+	client.CloseIdleConnections()
 	// Return the response bytes we got back
 	return body, nil
 }
