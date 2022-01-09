@@ -5,10 +5,10 @@ type LoginResults struct {
 	Error       string `xml:"Error" json:"error,omitempty"`
 	ErrorCode   int8   `xml:"ErrorCode" json:"error_code"`
 
-	Success        string `xml:"Success" json:"success"`
-	LoginLevel     int8   `xml:"LoginLevel" json:"login_level"`
-	CurrentStudent int32  `xml:"CurrentStudent" json:"current_student"`
-	Key            string `xml:"Key" json:"key"`
+	Success        string `xml:"Success" json:"success,omitempty"`
+	LoginLevel     int8   `xml:"LogonLevel" json:"login_level,omitempty"`
+	CurrentStudent int32  `xml:"CurrentStudent" json:"current_student,omitempty"`
+	Key            string `xml:"Key" json:"key,omitempty"`
 }
 
 type SettingsResults struct {
