@@ -24,29 +24,33 @@ const DefaultKey = "vtku"
 func main() {
 	// Create a new webserver
 	app := aero.New()
-	// Maps the pass-through routes and params to KAMAR
-
+	app.Use(func(handler aero.Handler) aero.Handler {
+		return func(context aero.Context) error {
+			response := context.Response()
+			response.SetHeader("Access-Control-Allow-Origin", "*")
+			response.SetHeader("Access-Control-Allow-Methods", "*")
+			response.SetHeader("Access-Control-Allow-Headers", "*")
+			response.SetHeader("Access-Control-Allow-Credentials", "true")
+			return handler(context)
+		}
+	})
 	// Bind all methods to HandleRequest
 	app.Any("/api/:command", HandleRequest)
-	app.Any("/*any", func(context aero.Context) error {
-		return context.File("public.html")
-	})
-	app.Any("/", func(context aero.Context) error {
-		return context.File("public.html")
-	})
-	app.Router().Add("OPTIONS", "/api/*any", func(context aero.Context) error {
-		response := context.Response()
-		response.SetHeader("Access-Control-Allow-Origin", "*")
-		response.SetHeader("Access-Control-Allow-Methods", "POST,GET,OPTIONS")
-		response.SetHeader("Access-Control-Allow-Headers", "*")
-		response.SetHeader("Access-Control-Allow-Credentials", "true")
-		context.SetStatus(204)
-		return context.Bytes([]byte{})
-	})
+
+	// Fallback routes for handling unknown paths
+	app.Any("*any", HandleFallback)
+	app.Any("/", HandleFallback)
+
 	// Configure the port
 	app.Config.Ports.HTTP = 4000
 	// Start the webserver
 	app.Run()
+}
+
+// HandleFallback handles any incoming requests that aren't for the API
+func HandleFallback(context aero.Context) error {
+	// Provide the public html page
+	return context.File("public.html")
 }
 
 // HandleRequest handles incoming requests and makes KAMAR requests from them
@@ -84,7 +88,7 @@ func HandleRequest(context aero.Context) error {
 		return context.JSON(ErrorResponse{Error: "Missing X-Portal header. Don't know where to send the request"})
 	}
 	// Log the request
-	log.Printf("(%s) (%s) >> %s", context.IP(), portalUrl, mapping.Command)
+	log.Printf("(%s) (%s) >> %s [%s]", context.IP(), portalUrl, mapping.Command, method)
 
 	// Prepend the protocol and append the api route
 	portalUrl = fmt.Sprintf("https://%s/api/api.php", portalUrl)
