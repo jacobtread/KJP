@@ -26,11 +26,7 @@ func main() {
 	app := aero.New()
 	app.Use(func(handler aero.Handler) aero.Handler {
 		return func(context aero.Context) error {
-			response := context.Response()
-			response.SetHeader("Access-Control-Allow-Origin", "*")
-			response.SetHeader("Access-Control-Allow-Methods", "*")
-			response.SetHeader("Access-Control-Allow-Headers", "*")
-			response.SetHeader("Access-Control-Allow-Credentials", "true")
+			SetCorsHeaders(context)
 			return handler(context)
 		}
 	})
@@ -41,10 +37,26 @@ func main() {
 	app.Any("*any", HandleFallback)
 	app.Any("/", HandleFallback)
 
+	app.Router().Add("OPTIONS", "*any", HandlePreflight)
+
 	// Configure the port
 	app.Config.Ports.HTTP = 4000
 	// Start the webserver
 	app.Run()
+}
+
+func SetCorsHeaders(context aero.Context) {
+	response := context.Response()
+	response.SetHeader("Access-Control-Allow-Origin", "*")
+	response.SetHeader("Access-Control-Allow-Methods", "*")
+	response.SetHeader("Access-Control-Allow-Headers", "*")
+	response.SetHeader("Access-Control-Allow-Credentials", "true")
+}
+
+func HandlePreflight(context aero.Context) error {
+	SetCorsHeaders(context)
+	context.SetStatus(204)
+	return context.Bytes([]byte{})
 }
 
 // HandleFallback handles any incoming requests that aren't for the API
