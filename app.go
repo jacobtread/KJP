@@ -26,20 +26,23 @@ func main() {
 	app := aero.New()
 	// Maps the pass-through routes and params to KAMAR
 
-	// Middleware for adding CORS Headers
-	app.Use(func(handler aero.Handler) aero.Handler {
-		return func(context aero.Context) error {
-			response := context.Response()
-			response.SetHeader("Access-Control-Allow-Origin", "*")
-			response.SetHeader("Access-Control-Allow-Methods", "POST,GET,OPTIONS")
-			response.SetHeader("Access-Control-Allow-Headers", "*")
-			response.SetHeader("Access-Control-Allow-Credentials", "true")
-			err := handler(context)
-			return err
-		}
-	})
 	// Bind all methods to HandleRequest
 	app.Any("/api/:command", HandleRequest)
+	app.Any("/*any", func(context aero.Context) error {
+		return context.File("public.html")
+	})
+	app.Any("/", func(context aero.Context) error {
+		return context.File("public.html")
+	})
+	app.Router().Add("OPTIONS", "/api/*any", func(context aero.Context) error {
+		response := context.Response()
+		response.SetHeader("Access-Control-Allow-Origin", "*")
+		response.SetHeader("Access-Control-Allow-Methods", "POST,GET,OPTIONS")
+		response.SetHeader("Access-Control-Allow-Headers", "*")
+		response.SetHeader("Access-Control-Allow-Credentials", "true")
+		context.SetStatus(204)
+		return context.Bytes([]byte{})
+	})
 	// Configure the port
 	app.Config.Ports.HTTP = 4000
 	// Start the webserver
